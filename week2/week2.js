@@ -1,12 +1,16 @@
-const path = require("path");
-const fs = require("fs");
-const os = require("os");
-const EventEmitter = require("events");
+const path = require("node:path");
+const fs = require("node:fs");
+const os = require("node:os");
+const EventEmitter = require("node:events");
 
 // 1
 function showCurrentPath() {
-    console.log(__filename);
-    console.log(__dirname);
+    const file = __filename;
+    const dir = __dirname;
+    console.log({
+        File: file,
+        Dir: dir
+    });
 }
 showCurrentPath();
 
