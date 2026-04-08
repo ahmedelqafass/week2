@@ -2,6 +2,7 @@ const path = require("node:path");
 const fs = require("node:fs");
 const os = require("node:os");
 const EventEmitter = require("node:events");
+const console = require("node:console");
 
 // 1
 function showCurrentPath() {
@@ -103,26 +104,21 @@ emitter.on("login", (name) => {
 emitter.emit("login", "Ahmed");
 
 // 14
-function readFileSyncExample() {
-    let file = "notes.txt";
-
-    if (!fs.existsSync(file)) {
-        fs.writeFileSync(file, "This is a note");
-    }
-
-    let data = fs.readFileSync(file, "utf8");
-    console.log(data);
+try {
+    const data = fs.readFileSync("./notes.txt", "utf8");
+    console.log(data , "This is a note");
+} catch (error) {
+    console.log(err);
 }
-readFileSyncExample();
 
 // 15
-function writeFileAsync(file, content) {
-    fs.writeFile(file, content, () => {
-        console.log("written");
-    });
-}
-writeFileAsync("async.txt", "Async save");
-
+fs.writeFile("async.txt", "Async save", (err)=>{
+ if(err){
+    console.log(err)
+ } 
+   console.log("fille written successfully");  
+}); 
+      
 // 16
 function checkExists(file) {
     return fs.existsSync(file);
