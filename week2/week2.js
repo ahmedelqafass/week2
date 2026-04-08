@@ -106,7 +106,7 @@ emitter.emit("login", "Ahmed");
 // 14
 try {
     const data = fs.readFileSync("./notes.txt", "utf8");
-    console.log(data , "This is a note");
+    console.log(data);
 } catch (error) {
     console.log(err);
 }
