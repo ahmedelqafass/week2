@@ -23,7 +23,7 @@ console.log(getFileName("/user/files/report.pdf"));
 
 // 3
 function buildPath(obj) {
-    return obj.dir + "/" + obj.name + obj.ext;
+    return path.join(obj.dir, obj.name + obj.ext);
 }
 console.log(buildPath({ dir: "/folder", name: "app", ext: ".js" }));
 
@@ -48,7 +48,7 @@ console.log(checkAbsolute("/home/user/file.txt"));
 
 // 7
 function joinSegments(a, b, c) {
-    return a + "/" + b + "/" + c;
+    return path.join(a, b, c);
 }
 console.log(joinSegments("src", "components", "App.js"));
 
@@ -60,10 +60,10 @@ console.log(resolvePath("./index.js"));
 
 // 9
 function joinTwoPaths(p1, p2) {
-    return p1 + "/" + p2;
+    return path.join(p1, p2);
 }
 console.log(joinTwoPaths("/folder1", "folder2/file.txt"));
-
+    
 // 10
 function deleteFileAsync(filePath) {
     if (fs.existsSync(filePath)) {
@@ -115,6 +115,7 @@ try {
 fs.writeFile("async.txt", "Async save", (err)=>{
  if(err){
     console.log(err)
+    return;
  } 
    console.log("fille written successfully");  
 }); 
